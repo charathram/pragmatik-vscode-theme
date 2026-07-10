@@ -1,7 +1,9 @@
 .vscode/**
 .gitignore
 .git/**
+.github/**
 docs/**
+images/**
 scripts/**
 *.vsix
 node_modules/**
