@@ -73,3 +73,33 @@ jobs:
       - name: Publish to Open VSX
         if: env.OVSX_PAT != ''
         run: npx --yes ovsx@latest publish pragmatik.vsix --pat "$OVSX_PAT"
+
+  # After a release, point the landing page's download button at the new .vsix
+  # and push the change to main, which redeploys GitHub Pages.
+  update-download-link:
+    needs: publish
+    if: github.event_name == 'release'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Point the download button at ${{ github.ref_name }}
+        run: node scripts/update-download-link.js "$GITHUB_REF_NAME"
+
+      - name: Commit and push if changed
+        run: |
+          if git diff --quiet docs/index.html; then
+            echo "docs/index.html already up to date"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/index.html
+          git commit -m "docs: point download link at ${GITHUB_REF_NAME}"
+          git push origin main
