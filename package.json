@@ -1,0 +1,75 @@
+{
+  "name": "pragmatik",
+  "displayName": "Pragmatik",
+  "description": "Warm sepia light and neutral near-black dark themes, with plain, bold, and italic keyword variants.",
+  "version": "0.1.0",
+  "publisher": "charathram",
+  "license": "MIT",
+  "author": {
+    "name": "charathram",
+    "email": "charath@pragmatik.tech"
+  },
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "color-theme",
+    "sepia",
+    "warm",
+    "dark",
+    "light"
+  ],
+  "galleryBanner": {
+    "color": "#171717",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/charathram/pragmatik-vscode-theme.git"
+  },
+  "bugs": {
+    "url": "https://github.com/charathram/pragmatik-vscode-theme/issues"
+  },
+  "homepage": "https://github.com/charathram/pragmatik-vscode-theme#readme",
+  "scripts": {
+    "build": "node scripts/build-themes.js"
+  },
+  "contributes": {
+    "themes": [
+      {
+        "label": "Pragmatik Light",
+        "uiTheme": "vs",
+        "path": "./themes/pragmatik-light.json"
+      },
+      {
+        "label": "Pragmatik Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/pragmatik-dark.json"
+      },
+      {
+        "label": "Pragmatik Light Bold",
+        "uiTheme": "vs",
+        "path": "./themes/pragmatik-light-bold.json"
+      },
+      {
+        "label": "Pragmatik Dark Bold",
+        "uiTheme": "vs-dark",
+        "path": "./themes/pragmatik-dark-bold.json"
+      },
+      {
+        "label": "Pragmatik Light Italic",
+        "uiTheme": "vs",
+        "path": "./themes/pragmatik-light-italic.json"
+      },
+      {
+        "label": "Pragmatik Dark Italic",
+        "uiTheme": "vs-dark",
+        "path": "./themes/pragmatik-dark-italic.json"
+      }
+    ]
+  }
+}
