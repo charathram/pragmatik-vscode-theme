@@ -45,18 +45,31 @@ jobs:
       - name: Package .vsix
         run: npx --yes @vscode/vsce@^3 package --no-dependencies --out pragmatik.vsix
 
-      - name: Publish to the VS Code Marketplace
-        run: npx --yes @vscode/vsce@^3 publish --no-dependencies --packagePath pragmatik.vsix
-
-      # Optional: also publish to Open VSX (used by VSCodium, Cursor, Gitpod,
-      # Eclipse Theia, etc.). Skipped automatically unless OVSX_PAT is set.
-      - name: Publish to Open VSX
-        if: env.OVSX_PAT != ''
-        run: npx --yes ovsx@latest publish pragmatik.vsix --pat "$OVSX_PAT"
-
-      # Attach the packaged .vsix to the GitHub Release for manual installs.
+      # Attach the .vsix to the Release first, so a release always yields a
+      # downloadable build regardless of whether Marketplace publishing runs.
       - name: Attach .vsix to the Release
         if: github.event_name == 'release'
         run: gh release upload "$GITHUB_REF_NAME" pragmatik.vsix --clobber
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # For manual "Run workflow" runs (no Release to attach to), expose the
+      # .vsix as a downloadable workflow artifact instead.
+      - name: Upload .vsix artifact
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@v4
+        with:
+          name: pragmatik-vsix
+          path: pragmatik.vsix
+
+      # Publish to the VS Code Marketplace. Skipped automatically unless
+      # VSCE_PAT is set, so building a .vsix never depends on Marketplace setup.
+      - name: Publish to the VS Code Marketplace
+        if: env.VSCE_PAT != ''
+        run: npx --yes @vscode/vsce@^3 publish --no-dependencies --packagePath pragmatik.vsix
+
+      # Also publish to Open VSX (VSCodium, Cursor, Gitpod, Eclipse Theia, etc.).
+      # Skipped automatically unless OVSX_PAT is set.
+      - name: Publish to Open VSX
+        if: env.OVSX_PAT != ''
+        run: npx --yes ovsx@latest publish pragmatik.vsix --pat "$OVSX_PAT"
