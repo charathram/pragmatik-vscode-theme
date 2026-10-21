@@ -18,11 +18,11 @@ jobs:
       VSCE_PAT: ${{ secrets.VSCE_PAT }}
       OVSX_PAT: ${{ secrets.OVSX_PAT }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
-          node-version: 20
+          node-version: 24
 
       # Guard: on a Release, the tag must match package.json's version, so you
       # never publish a stale version by forgetting to bump it.
@@ -57,7 +57,7 @@ jobs:
       # .vsix as a downloadable workflow artifact instead.
       - name: Upload .vsix artifact
         if: github.event_name == 'workflow_dispatch'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: pragmatik-vsix
           path: pragmatik.vsix
@@ -81,13 +81,13 @@ jobs:
     if: github.event_name == 'release'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           ref: main
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
-          node-version: 20
+          node-version: 24
 
       - name: Point the download button at ${{ github.ref_name }}
         run: node scripts/update-download-link.js "$GITHUB_REF_NAME"
