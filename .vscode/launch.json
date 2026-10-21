@@ -1,7 +1,9 @@
 {
-  // Press F5 to open an Extension Development Host with the Pragmatik theme
-  // loaded. In that window: Cmd+K Cmd+T to pick a variant. Editing a
-  // themes/*.json file hot-reloads the colors live.
+  // Press Ctrl+F5 (Run Without Debugging) to open an Extension Development
+  // Host with the Pragmatik theme loaded and the samples/ folder open. F5 also
+  // works, but in VS Code 1.142 the debugger can crash the new window. In that
+  // window: Cmd+K Cmd+T to pick a variant. Editing a themes/*.json file
+  // hot-reloads the colors live.
   "version": "0.2.0",
   "configurations": [
     {
@@ -10,7 +12,7 @@
       "request": "launch",
       "args": [
         "--extensionDevelopmentPath=${workspaceFolder}",
-        "${workspaceFolder}"
+        "${workspaceFolder}/samples"
       ]
     }
   ]

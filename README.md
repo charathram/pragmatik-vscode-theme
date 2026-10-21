@@ -1,8 +1,8 @@
 # Pragmatik — a VS Code theme
 
-A pair of themes with a warm **sepia light** mode and a **neutral near-black dark** mode, and a syntax palette that favors readability (purple keywords, blue types, green strings, amber numbers, rust-orange functions, taupe italic comments).
+A pair of themes with a warm **sepia light** mode and a **neutral near-black dark** mode, and a syntax palette that favors readability (purple keywords, blue types, green strings, magenta numbers, orange functions, taupe italic comments).
 
-This is the VS Code port of the [Pragmatik theme for Zed](https://github.com/charathram/pragmatik-zed-theme); the two share the same palette so the editors look identical.
+This is the VS Code port of the [Pragmatik theme for Zed](https://github.com/charathram/pragmatik-zed-theme). Since version 0.2.0, this theme uses higher-contrast syntax colors than the Zed theme.
 
 ## Preview
 
@@ -49,8 +49,10 @@ To follow your system light/dark automatically, in `settings.json`:
 ## Develop locally
 
 1. Open this folder in VS Code.
-2. Press `F5` to launch an **Extension Development Host** with the theme loaded (the "Run Pragmatik theme" configuration).
+2. Press `Ctrl+F5` (**Run Without Debugging**) to launch an **Extension Development Host** with the theme loaded and the `samples/` folder open (the "Run Pragmatik theme" configuration). `F5` also works, but in VS Code 1.142 the debugger can crash the new window.
 3. In that window, pick a **Pragmatik** variant via **Preferences: Color Theme**. Editing a file under `themes/` hot-reloads the colors live.
+
+The [`samples/`](samples/) folder has short programs in C, C#, Java, COBOL, Pascal, Rust, Python, JavaScript, TypeScript, Go and CSV for checking the palette.
 
 The theme files under `themes/` are generated. Edit the palette in
 [`scripts/build-themes.js`](scripts/build-themes.js) and regenerate:

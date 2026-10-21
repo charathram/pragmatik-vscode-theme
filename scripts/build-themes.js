@@ -19,36 +19,36 @@ const path = require("path");
 const THEMES_DIR = path.join(__dirname, "..", "themes");
 
 // ---------------------------------------------------------------------------
-// Palettes. Values are lifted directly from the Zed theme so the two editors
-// render the same colors.
+// Palettes. Originally lifted from the Zed theme. Since 0.2.0 the syntax colors
+// are higher contrast: about 7:1 on the light editor and 8:1 on the dark one.
 // ---------------------------------------------------------------------------
 
 const light = {
   // Surfaces
   bg: "#f3eee1", // sidebar / activity bar / panels (warm sepia)
-  bgEditor: "#fbf9f3", // editor / terminal (lighter sepia)
+  bgEditor: "#fcfaf5", // editor / terminal (lighter sepia)
   bgElevated: "#faf4e8", // popups, hover cards, menus
-  bgInput: "#fbf9f3",
+  bgInput: "#fcfaf5",
   border: "#e6e2d6",
   borderVariant: "#ded9ca",
 
   // Text
   text: "#1a1a1a",
-  textMuted: "#555049",
+  textMuted: "#47423b",
   textPlaceholder: "#8a8478",
   textDisabled: "#a9a394",
 
   // Accent (rust orange)
   accent: "#b7410e",
-  accentContrast: "#fbf9f3", // readable text on the accent
+  accentContrast: "#fcfaf5", // readable text on the accent
   accentSubtle: "#b7410e26",
   focusBorder: "#b7410e66",
 
   // Editor chrome
-  lineNumber: "#c2bba9",
+  lineNumber: "#a39b88",
   lineNumberActive: "#1a1a1a",
   activeLine: "#00000014",
-  invisible: "#c2bba9",
+  invisible: "#a39b88",
   wrapGuide: "#00000010",
   wrapGuideActive: "#00000020",
   selection: "#b7410e33",
@@ -72,67 +72,67 @@ const light = {
   error: "#b3261e",
   errorBg: "#fbe9e7",
   errorBorder: "#f2cfc9",
-  warning: "#b76b01",
+  warning: "#804800",
   warningBg: "#f9efd9",
   warningBorder: "#ecd7a6",
-  info: "#3a6ea5",
+  info: "#11549e",
   infoBg: "#e7eef6",
   infoBorder: "#cadcef",
-  hint: "#3a6ea5",
+  hint: "#11549e",
 
   // Source control
-  created: "#2f7d32",
+  created: "#12621e",
   deleted: "#b3261e",
   modified: "#b7410e",
   conflict: "#9a5b00",
   ignored: "#a9a394",
-  linkHover: "#3a6ea5",
+  linkHover: "#11549e",
 
   // Terminal ANSI
   ansi: {
     black: "#3a3a3a",
-    red: "#b3261e",
-    green: "#2f7d32",
-    yellow: "#9a5b00",
-    blue: "#3a6ea5",
-    magenta: "#8959a8",
-    cyan: "#2f7d6e",
-    white: "#555049",
+    red: "#9a2a20",
+    green: "#12621e",
+    yellow: "#7c4810",
+    blue: "#11549e",
+    magenta: "#761dc9",
+    cyan: "#135d61",
+    white: "#47423b",
     brightBlack: "#8a8478",
-    brightRed: "#d1443b",
-    brightGreen: "#3f9d43",
-    brightYellow: "#b76b01",
-    brightBlue: "#4d86c4",
-    brightMagenta: "#a06fc2",
-    brightCyan: "#3f9d8b",
+    brightRed: "#b83a2f",
+    brightGreen: "#2f8333",
+    brightYellow: "#9a5b00",
+    brightBlue: "#3a72b0",
+    brightMagenta: "#8f5bb2",
+    brightCyan: "#2f8a78",
     brightWhite: "#1a1a1a",
   },
 
   // Syntax
   syn: {
-    comment: "#8a8478",
-    keyword: "#8959a8",
-    operator: "#555049",
-    punctuation: "#555049",
-    string: "#3f7e3a",
-    stringEscape: "#b76b01",
-    number: "#b76b01",
-    constant: "#b76b01",
-    type: "#3a6ea5",
-    property: "#555049",
-    function: "#b7410e",
-    macro: "#9a5b00",
-    attribute: "#9a5b00",
+    comment: "#6b6558",
+    keyword: "#761dc9",
+    operator: "#47423b",
+    punctuation: "#47423b",
+    string: "#12621e",
+    stringEscape: "#9e1869",
+    number: "#9e1869",
+    constant: "#9e1869",
+    type: "#11549e",
+    property: "#47423b",
+    function: "#9b2e11",
+    macro: "#7c4810",
+    attribute: "#7c4810",
     variable: "#1a1a1a",
-    variableSpecial: "#b7410e",
-    tag: "#8959a8",
-    label: "#b7410e",
-    title: "#b7410e",
+    variableSpecial: "#9b2e11",
+    tag: "#761dc9",
+    label: "#9b2e11",
+    title: "#9b2e11",
     predictive: "#b6ad98",
   },
 
   // Bracket pair rotation
-  brackets: ["#3a6ea5", "#8959a8", "#b76b01", "#3f7e3a", "#2f7d6e", "#b7410e"],
+  brackets: ["#11549e", "#761dc9", "#9e1869", "#12621e", "#135d61", "#9b2e11"],
 };
 
 const dark = {
@@ -144,7 +144,7 @@ const dark = {
   borderVariant: "#232323",
 
   text: "#e6e6e6",
-  textMuted: "#a0a0a0",
+  textMuted: "#adadad",
   textPlaceholder: "#6e6e6e",
   textDisabled: "#5a5a5a",
 
@@ -181,27 +181,27 @@ const dark = {
   warning: "#e0a24a",
   warningBg: "#2a2413",
   warningBorder: "#443b24",
-  info: "#7ba6d9",
+  info: "#6aadf0",
   infoBg: "#16222e",
   infoBorder: "#2c3f52",
-  hint: "#7ba6d9",
+  hint: "#6aadf0",
 
-  created: "#7fbf6f",
+  created: "#72b874",
   deleted: "#e06b62",
   modified: "#e0763c",
   conflict: "#d1a75c",
   ignored: "#5a5a5a",
-  linkHover: "#7ba6d9",
+  linkHover: "#6aadf0",
 
   ansi: {
     black: "#2a2a2a",
     red: "#e06b62",
-    green: "#7fbf6f",
-    yellow: "#d1a75c",
-    blue: "#7ba6d9",
-    magenta: "#c39ae0",
-    cyan: "#6fbfae",
-    white: "#a0a0a0",
+    green: "#72b874",
+    yellow: "#d0a047",
+    blue: "#6aadf0",
+    magenta: "#b79aec",
+    cyan: "#14bbbb",
+    white: "#adadad",
     brightBlack: "#5a5a5a",
     brightRed: "#ec8079",
     brightGreen: "#97cf88",
@@ -213,28 +213,28 @@ const dark = {
   },
 
   syn: {
-    comment: "#7d7d7d",
-    keyword: "#c39ae0",
-    operator: "#a0a0a0",
-    punctuation: "#a0a0a0",
-    string: "#8cc27a",
-    stringEscape: "#e0a24a",
-    number: "#e0a24a",
-    constant: "#e0a24a",
-    type: "#7ba6d9",
-    property: "#a0a0a0",
-    function: "#e8794a",
-    macro: "#d1a75c",
-    attribute: "#d1a75c",
+    comment: "#8a8a8a",
+    keyword: "#b79aec",
+    operator: "#adadad",
+    punctuation: "#adadad",
+    string: "#72b874",
+    stringEscape: "#e58cb7",
+    number: "#e58cb7",
+    constant: "#e58cb7",
+    type: "#6aadf0",
+    property: "#adadad",
+    function: "#ea926a",
+    macro: "#d0a047",
+    attribute: "#d0a047",
     variable: "#e6e6e6",
-    variableSpecial: "#e8794a",
-    tag: "#c39ae0",
-    label: "#e8794a",
-    title: "#e8794a",
+    variableSpecial: "#ea926a",
+    tag: "#b79aec",
+    label: "#ea926a",
+    title: "#ea926a",
     predictive: "#5a5a5a",
   },
 
-  brackets: ["#7ba6d9", "#c39ae0", "#e0a24a", "#8cc27a", "#6fbfae", "#e8794a"],
+  brackets: ["#6aadf0", "#b79aec", "#e58cb7", "#72b874", "#14bbbb", "#ea926a"],
 };
 
 // ---------------------------------------------------------------------------
